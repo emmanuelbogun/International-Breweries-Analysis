@@ -1,0 +1,121 @@
+select * from internationalbreweries.pabod
+
+select sum(profit) from internationalbreweries.pabod
+where years between 2017 and 2019
+
+select distinct countries from internationalbreweries.pabod
+
+select sum(profit) as total_profit from internationalbreweries.pabod
+where countries in ('Nigeria','Ghana')
+
+select sum(profit) as total_profit from internationalbreweries.pabod
+where countries in ('Benin','Senegal','Togo')
+
+select countries, sum(profit) as HighestProfit from internationalbreweries.pabod
+where years= 2019
+group by countries
+order by HighestProfit desc
+limit 1
+
+select years, sum(profit) from internationalbreweries.pabod
+group by years
+order by sum(profit) desc
+limit 1
+
+select months, years, profit from internationalbreweries.pabod
+where years between 2017 and 2019
+order by profit  
+limit 1
+
+select profit from internationalbreweries.pabod
+where months = 'December' and years = '2018'
+order by profit
+limit 1
+
+select distinct months, profit, from internationalbreweries.pabod
+where years= 2019
+group by months
+order by sum(profit)
+
+select brands, sum(profit) from internationalbreweries.pabod
+where countries = 'Senegal'
+group by brands
+order by sum(profit) desc
+
+select months, (profit/sum(profit))*100 as percentage from internationalbreweries.pabod
+
+select * from internationalbreweries.pabod
+
+select brands,sum(quantity) as TopBrands from internationalbreweries.pabod
+where years between 2018 and 2019 and countries in('Benin','Togo','Senegal')
+group by brands
+order by TopBrands desc
+limit 3
+select * from internationalbreweries.pabod
+
+select brands, sum(quantity) as topchoice from internationalbreweries.pabod
+where countries = 'Ghana'
+group by brands
+order by topchoice desc
+limit 2
+
+select brands, sum(quantity), sum(profit) from internationalbreweries.pabod
+where countries = 'Nigeria' and brands in('eagle lager','hero','castle lite','budweiser','trophy')
+group by brands
+order by sum(profit) desc
+
+select brands, sum(quantity) from internationalbreweries.pabod
+where brands in('grand malt','beta malt') and countries in('Ghana','Nigeria')
+group by brands
+order by sum(quantity) desc
+limit 1
+select * from internationalbreweries.pabod
+
+select brands, sum(quantity) from internationalbreweries.pabod
+where countries = 'Nigeria' and years = 2019
+group by brands
+order by sum(quantity) desc
+
+select brands, sum(quantity) from internationalbreweries.pabod
+where countries = 'Nigeria' and region = 'southsouth'
+group by brands
+order by sum(quantity) desc
+
+select * from internationalbreweries.pabod
+select brands, sum(quantity) as BeerConsumption from internationalbreweries.pabod
+where countries = 'Nigeria' and brands in('eagle lager','hero','castle lite','budweiser','trophy')
+group by brands
+order by BeerConsumption desc
+
+select region,sum(quantity) from internationalbreweries.pabod
+where countries ='Nigeria' and brands = 'budweiser'
+group by region
+order by sum(quantity) desc
+
+
+select region,sum(quantity) from internationalbreweries.pabod
+where countries ='Nigeria' and brands = 'budweiser' and years = 2019
+group by region,brands
+order by sum(quantity) desc
+
+select countries, sum(quantity) from internationalbreweries.pabod
+where brands in('eagle lager','hero','castle lite','budweiser','trophy')
+group by countries
+order by sum(quantity) desc
+
+select sales_rep, sum(quantity) from internationalbreweries.pabod
+where countries = 'Senegal' and brands = 'budweiser'
+group by sales_rep
+order by sum(profit) desc
+limit 1
+
+select countries, sum(profit) from internationalbreweries.pabod
+where years = 2019 and months in('October','November','December')
+group by countries
+order by sum(profit) desc
+limit 1
+
+select months, round((sum(profit)/30020250)*100,1) as PercentageProfit from internationalbreweries.pabod
+where years= 2019
+group by months
+order by PercentageProfit desc
